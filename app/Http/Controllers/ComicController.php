@@ -34,6 +34,8 @@ class ComicController extends Controller
      */
     public function create()
     {
+        $comics = Comic::all();
+        return view('comics.create');
         //
     }
 
@@ -45,7 +47,22 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        // dump($newComic);
+        $newComic = new Comic();
+        $newComic->title = $data['title'];
+        $newComic->description = $data['description'];
+        $newComic->series = $data['series'];
+        $newComic->type = $data['type'];
+        $newComic->price = $data["price"];
+        $newComic->sale_date = $data['sale_date'];
+        $newComic->artists = $data["artists"];
+        $newComic->writers = $data["writers"];
+        $newComic->thumb =  $data["thumb"];
+        $newComic->save();
+
+        return redirect()->route("comics.show",  $newComic->id);
     }
 
 
@@ -63,7 +80,7 @@ class ComicController extends Controller
         $footerLinks = config("DBfooter");
         $bottomBunnerLinks = config("DBbottomBunnerSocial");
 
-        return view("comics.show", compact('comic','navLinks','footerLinks','bottomBunnerLinks'));
+        return view("comics.show", compact('comic', 'navLinks', 'footerLinks', 'bottomBunnerLinks'));
     }
     /**
      * Show the form for editing the specified resource.
