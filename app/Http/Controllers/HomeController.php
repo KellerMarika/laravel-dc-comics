@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $navLinks = config("DBheaderNav");
         $topBunner = config("DBtopBunner");
-            $footerLinks = config("DBfooter");
+        $footerLinks = config("DBfooter");
         $bottomBunnerLinks = config("DBbottomBunnerSocial");
 
 
