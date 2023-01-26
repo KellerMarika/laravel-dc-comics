@@ -20,9 +20,8 @@ class ComicController extends Controller
         $bottomBunnerLinks = config("DBbottomBunnerSocial");
 
 
-        $comics = config("DBcomics");
-        /*      
-        $comics = Comic::all(); */
+        $comics = Comic::all();
+
         return view('comics.home', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics'));
         //
     }

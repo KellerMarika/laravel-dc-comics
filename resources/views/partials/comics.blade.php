@@ -4,8 +4,7 @@
 
 @extends('layout.app')
 @section('main')
-
-    <article class="jumbotron" style="background-image: url({{ Vite::asset('resources/img/jumbotron.jpg') }})"></article>
+<article class="jumbotron" style="background-image: url({{ Vite::asset('resources/img/jumbotron.jpg') }})"></article>
     <article class="cards-container py_l">
         <div class="container text-center position-relative">
 
@@ -13,7 +12,7 @@
 
             <div class="row row-cols-6">
 
-          
+
 
                 @foreach ($comics as $key => $comic)
                     <div class="col">
@@ -27,7 +26,7 @@
                                 <h6 class="text-uppercase small py-3">{{ $comic['series'] }}</h6>
                             </div>
                         </a>
-                        
+
                     </div>
                 @endforeach
 
