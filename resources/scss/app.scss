@@ -1,1 +1,171 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+//variables
+/* *{border:1px solid red} */
+$primary: #0282f9;
+$secondary: #303030;
+$secondary_light: #797979;
+$success: #55ba59;
+
+$dark: #1c1c1c;
+$light: #ffffff;
+
+
+$spacer_2: 1.5rem;
+$spacer_3: (
+  $spacer_2)*2;
+$spacer_1: (
+  $spacer_2)/2;
+
+/* utilities che si appoggiano a variabili */
+
+.py_s {
+  padding: $spacer_1 0;
+}
+
+.py_m {
+  padding: $spacer_2 0;
+}
+
+.py_l {
+  padding: $spacer_3 0;
+}
+
+body {
+  font-family: 'Roboto',
+    sans-serif;
+
+}
+
+.bg-primary-light {
+  background-color: #00a9d9;
+}
+
+.text-primary-light {
+ color: #61c3e3;
+}
+.text-primary-dark {
+ color: #1c639d;
+}
+.bg-success-light {
+  background-color: #55ba59;
+}
+
+/* NAVBAR */
+nav {
+  .nav-logo {
+    width: 80px;
+  }
+
+  a {
+    font-size: .75rem;
+    font-weight: 800;
+    color: $secondary;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: $primary
+    }
+
+    .link-underline {
+      margin-bottom: -1.5rem;
+      background-color: $secondary;
+      height: 6px;
+      width: 0px;
+      transition: all .3s;
+    }
+
+    &:hover .link-underline {
+      background-color: $primary;
+      width: 100%;
+    }
+  }
+}
+
+
+/* MAIN  */
+.jumbotron {
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  height: 500px;
+
+}
+
+.cards-container {
+  background-color: $dark;
+  color: $light;
+
+  .cards-title {
+    top: -80px;
+  }
+
+  .dc-card-img {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+  }
+}
+
+/* TOP BUNNER */
+.top-bunner {
+  background-color: $primary;
+  color: $light;
+
+  .list-group-item {
+    flex-basis: calc(100% / 5
+    );
+}
+
+a {
+  color: $light;
+}
+
+.link-img {
+  max-height: 70px;
+  max-width: 70px;
+  padding-right: $spacer_1;
+}
+}
+
+/* FOOTER */
+.bg-footer {
+  a {
+    color: $secondary_light !important;
+    text-transform: capitalize;
+    font-size: small;
+  }
+}
+
+.bg-footer {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer-dc-logo {
+  background-image: url(/dc-logo-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* BOTTOM BUNNER */
+.BottomBunner {
+  background-color: $secondary;
+}
+
+.login-btn {
+  border: 2px solid $primary;
+}
+
+/* CARDOVERVIEW_____________________ */
+.comic-card-overview {
+  .img-container {
+    top: -380px;
+  }
+
+  .comic-info{
+    background-color:#f6f6f6;
+  }
+}
