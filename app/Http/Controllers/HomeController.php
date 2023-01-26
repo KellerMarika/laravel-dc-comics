@@ -19,7 +19,7 @@ class HomeController extends Controller
         $comics = config("DBcomics");
         /*      
         $comics = Comic::all(); */
-        return view('home', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks','comics'));
+        return view('comics.home', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks','comics'));
     }
 
 }
