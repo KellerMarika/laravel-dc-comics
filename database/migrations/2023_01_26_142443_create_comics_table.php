@@ -24,6 +24,7 @@ return new class extends Migration
             $table->dateTime('sale_date');
             $table->string ('artists');
             $table->string ('writers');
+            $table->string ('thumb');
 
 
         });
