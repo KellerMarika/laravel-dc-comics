@@ -4,7 +4,7 @@
 
 @extends('layout.app')
 @section('main')
-<article class="jumbotron" style="background-image: url({{ Vite::asset('resources/img/jumbotron.jpg') }})"></article>
+    <article class="jumbotron" style="background-image: url({{ Vite::asset('resources/img/jumbotron.jpg') }})"></article>
     <article class="cards-container py_l">
         <div class="container text-center position-relative">
 
@@ -16,7 +16,7 @@
 
                 @foreach ($comics as $key => $comic)
                     <div class="col">
-                        <a href="/comicOverview" class="text-decoration-none text-light">
+                        <a href="/comics/{{$comic['id']}}" class="text-decoration-none text-light">
                             {{-- al click assegno a $comicIndexPassedOnClick il valore dell'index del comic cliccato POST ($key)  --}}
                             <div class="dc-card text-start">
 

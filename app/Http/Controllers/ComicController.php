@@ -22,7 +22,8 @@ class ComicController extends Controller
 
         $comics = Comic::all();
 
-        return view('comics.home', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics'));
+
+        return view('comics.index', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics'));
         //
     }
 
@@ -47,17 +48,23 @@ class ComicController extends Controller
         //
     }
 
+
+    /************** SHOW **************************************/
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * 
+     *viene passato l'id del fumetto cliccato. è la funxione che autonomamente sovrascrive la varabile con l'intera riga della tabella corrispondente all'id
+     * @param  int  $comic
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comic $comic)
     {
-        //
-    }
+        $navLinks = config("DBheaderNav");
+        $topBunner = config("DBtopBunner");
+        $footerLinks = config("DBfooter");
+        $bottomBunnerLinks = config("DBbottomBunnerSocial");
 
+        return view("comics.show", compact('comic','navLinks','footerLinks','bottomBunnerLinks'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

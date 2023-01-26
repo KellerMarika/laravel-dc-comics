@@ -21,27 +21,27 @@
 
 
             <div class="img-container position-absolute border border-light">
-                <div class="position-absolute text-light text-uppercase px-2 bg-primary-light">{{ $comics[$comicIndex]['type'] }}</div>
-                <img src="{{ $comics[$comicIndex]['thumb'] }}" alt="{{ $comics[$comicIndex]['title'] }}" class="img-fluid">
+                <div class="position-absolute text-light text-uppercase px-2 bg-primary-light">{{ $comic['type'] }}</div>
+                <img src="{{ $comic['thumb'] }}" alt="{{ $comic['title'] }}" class="img-fluid">
                 <div class="text-light  text-uppercase px-2 bg-primary-light">view gallery</div>
             </div>
             {{-- card-body --}}
         
             <div class="row card-body">
                 <div class="col-9">
-                    <h1 class="card-title fs-3 text-uppercase text-primary-dark">{{ $comics[$comicIndex]['title'] }}</h1>
+                    <h1 class="card-title fs-3 text-uppercase text-primary-dark">{{ $comic['title'] }}</h1>
 
                     <div class="card-price d-flex border-success bg-success-light text-light  py-3">
 
                         <div class="d-flex flex-fill px-3">
                             <div class="price flex-fill"><span class="text-light  opacity-50">U.S. Price:
-                                </span>{{ $comics[$comicIndex]['price'] }} </div>
+                                </span>{{ $comic['price'] }} </div>
                             <div class=" text-uppercase opacity-50">avaiable</div>
                         </div>
                         <div class="px-3">check Availability {{-- ___________________freccetta --}}</div>
                     </div>
 
-                    <p class="description py-3 text-secondary">{{ $comics[$comicIndex]['description'] }}</p>
+                    <p class="description py-3 text-secondary">{{ $comic['description'] }}</p>
                 </div>
 
 
@@ -66,12 +66,12 @@
                                 <tr>
                                     <th scope="row" class="small text-primary-dark">Art by:</th>
                                     <td class="small text-primary-light fw-bold ps-5">
-                                        {{ implode(', ', $comics[$comicIndex]['artists']) }}</td>
+                                        {{$comic['artists'] }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="small text-primary-dark">Written by:</th>
                                     <td class="small text-primary-light fw-bold ps-5">
-                                        {{ implode(', ', $comics[$comicIndex]['writers']) }}</td>
+                                        {{  $comic['writers'] }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -83,16 +83,16 @@
                                 <tr>
                                     <th scope="row" class="small text-primary-dark">Series:</th>
                                     <td class="small text-primary-light fw-bold ps-5 text-uppercase">
-                                        {{ $comics[$comicIndex]['series'] }}</td>
+                                        {{ $comic['series'] }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="small text-primary-dark">U.S. Price:</th>
-                                    <td class="small  fw-bold ps-5">{{ $comics[$comicIndex]['price'] }}</td>
+                                    <td class="small  fw-bold ps-5">{{ $comic['price'] }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="small text-primary-dark">On Sale Date:</th>
                                     <td class="small  fw-bold ps-5">
-                                        {{ date('M d Y', strtotime($comics[$comicIndex]['sale_date'])) }}</td>
+                                        {{ date('M d Y', strtotime($comic['sale_date'])) }}</td>
 
                                 </tr>
                             </tbody>
@@ -109,9 +109,9 @@
 
 
 
-    <style>
+{{--     <style>
         .comic-card * {
             border: 1px solid red;
         }
-    </style>
+    </style> --}}
 @endsection
