@@ -1,4 +1,24 @@
-@import '~bootstrap/scss/bootstrap';
+//VARIABLES (bootstrap)
+$primary_color: #0282f9;;
+$secondary_color: #303030;
+$success_color:  #ffffff;
+$info_color: rgb(153, 72, 146);
+$warning_color: rgb(255, 55, 98);
+$danger_color: rgb(2, 189, 101);
+$light_color: rgb(252, 250, 249);
+$dark_color: #1c1c1c;
+
+@use "bootstrap/scss/bootstrap" with (
+  $primary: $primary_color,
+  $secondary: $secondary_color,
+  $success: $success_color,
+  $info: $info_color,
+  $warning: $warning_color,
+  $danger: $danger_color,
+  $light: $light_color,
+  $dark: $dark_color,
+
+);
 
 //variables
 /* *{border:1px solid red} */
