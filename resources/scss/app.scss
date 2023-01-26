@@ -1,8 +1,10 @@
+@use "@fortawesome/fontawesome-free/css/all.min.css";
+
 //VARIABLES (bootstrap)
 $primary_color: #0282f9;;
 $secondary_color: #303030;
 $success_color:  #ffffff;
-$info_color: rgb(153, 72, 146);
+$info_color: rgb(218, 222, 233);
 $warning_color: rgb(255, 55, 98);
 $danger_color: rgb(2, 189, 101);
 $light_color: rgb(252, 250, 249);
@@ -183,6 +185,8 @@ a {
 .comic-card-overview {
   .img-container {
     top: -380px;
+    width: 196px;
+    height: 321px;
   }
 
   .comic-info{

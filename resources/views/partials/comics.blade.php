@@ -30,7 +30,7 @@
 
             </div>
 
-            <button class="btn btn-primary text-light text-uppercase rounded-0 fw-bold py-2 px-5">load more</button>
+            <a href="/comics/create" class="btn  btn-primary text-light text-uppercase rounded-0 fw-bold py-2 px-5">add new comic</a>
         </div>
     </article>
 @endsection
