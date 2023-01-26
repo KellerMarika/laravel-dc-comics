@@ -4,14 +4,16 @@
 
 @extends('layout.app')
 @section('main')
-    <article class="jumbotron" style="background-image: url({{ Vite::asset('resources/img/jumbotron.jpg') }})"></article>
 
+    <article class="jumbotron" style="background-image: url({{ Vite::asset('resources/img/jumbotron.jpg') }})"></article>
     <article class="cards-container py_l">
         <div class="container text-center position-relative">
 
             <h1 class="cards-title text-uppercase bg-primary py-2 px-4 position-absolute fs-3"> current series </h1>
 
             <div class="row row-cols-6">
+
+          
 
                 @foreach ($comics as $key => $comic)
                     <div class="col">
