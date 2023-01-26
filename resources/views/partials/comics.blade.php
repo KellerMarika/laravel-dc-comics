@@ -12,7 +12,7 @@
 
             <div class="row row-cols-6">
 
-
+          
 
                 @foreach ($comics as $key => $comic)
                     <div class="col">

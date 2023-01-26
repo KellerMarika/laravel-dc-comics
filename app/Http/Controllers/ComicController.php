@@ -22,6 +22,10 @@ class ComicController extends Controller
 
         $comics = Comic::all();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> comics
         return view('comics.home', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics'));
         //
     }
