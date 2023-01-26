@@ -1,7 +1,7 @@
 <?php
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ComicController;
 use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [HomeController::class, 'home'])->name('comics.home');
+Route::get('/', [ComicController::class, 'index'])->name('comics.home');
