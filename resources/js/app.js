@@ -14,10 +14,10 @@ deleteForms_list.forEach((deleteForm) => {
     deleteForm.addEventListener("submit", function (event) {
 
         event.preventDefault();
-        const confirm = confirm("do you really want to delete this item?");
+        const conf = confirm("do you really want to delete this item?");
 
-        if (confirm === true) {
-            form.submit();
+        if (conf === true) {
+            deleteForm.submit();
         }
     })
 })
