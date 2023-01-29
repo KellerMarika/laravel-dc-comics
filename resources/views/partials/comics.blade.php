@@ -1,35 +1,53 @@
+<article class="cards-container py_l">
+    <div class="container text-center position-relative">
+
+        <h1 class="cards-title text-uppercase bg-primary py-2 px-4 position-absolute fs-3"> current series </h1>
+
+        <div class="row row-cols-6">
 
 
 
-    <article class="cards-container py_l">
-        <div class="container text-center position-relative">
+            @foreach ($comics as $key => $comic)
+                <div class="col">
+                    <a href="/comics/{{ $comic['id'] }}" class="text-decoration-none text-light">
 
-            <h1 class="cards-title text-uppercase bg-primary py-2 px-4 position-absolute fs-3"> current series </h1>
+                        <div class="dc-card text-start">
 
-            <div class="row row-cols-6">
-
-
-
-                @foreach ($comics as $key => $comic)
-                    <div class="col">
-                        <a href="/comics/{{ $comic['id'] }}" class="text-decoration-none text-light">
-
-                            <div class="dc-card text-start">
-
-                                <div class="dc-card-img">
-                                    <img class="img-fluid" src="{{ $comic['thumb'] }}" alt="{{ $comic['series'] }}">
-                                </div>
-                                <h6 class="text-uppercase small py-3">{{ $comic['series'] }}</h6>
+                            <div class="dc-card-img">
+                                <img class="img-fluid" src="{{ $comic['thumb'] }}" alt="{{ $comic['series'] }}">
                             </div>
-                        </a>
+                            <h6 class="text-uppercase small py-3">{{ $comic['series'] }}</h6>
+                        </div>
+                    </a>
+                    <div class="options bg-success d-flex">
+                        <div>
+                            <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-link">
+                                <i class="fas fa-pencil"></i>
+                            </a>
+                        </div>
+
+                        <div>
+
+
+
+                            @php
+                                $element = $comic;
+                            @endphp
+
+
+                            @include('partials.destroyForm', $element)
+                        </div>
+
+
 
                     </div>
-                @endforeach
 
-            </div>
+                </div>
+            @endforeach
 
-            <a href="/comics/create" class="btn  btn-primary text-light text-uppercase rounded-0 fw-bold py-2 px-5">add new
-                comic</a>
         </div>
-    </article>
 
+        <a href="/comics/create" class="btn  btn-primary text-light text-uppercase rounded-0 fw-bold py-2 px-5">add new
+            comic</a>
+    </div>
+</article>

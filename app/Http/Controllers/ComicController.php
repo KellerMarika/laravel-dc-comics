@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+        /************** INDEX **************************************/
     /**
      * Display a listing of the resource.
      *
@@ -19,14 +20,12 @@ class ComicController extends Controller
         $footerLinks = config("DBfooter");
         $bottomBunnerLinks = config("DBbottomBunnerSocial");
 
-
         $comics = Comic::all();
-
 
         return view('comics.index', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics'));
         //
     }
-
+    /************** CREATE **************************************/
     /**
      * Show the form for creating a new resource.
      *
@@ -34,10 +33,11 @@ class ComicController extends Controller
      */
     public function create()
     {
-        $comics = Comic::all();
         return view('comics.create');
         //
     }
+
+        /************** STORE **************************************/
 
     /**
      * Store a newly created resource in storage.
@@ -51,7 +51,7 @@ class ComicController extends Controller
 
         // dump($newComic);
         $newComic = new Comic();
-        $newComic->title = $data['title'];
+  /*       $newComic->title = $data['title'];
         $newComic->description = $data['description'];
         $newComic->series = $data['series'];
         $newComic->type = $data['type'];
@@ -59,7 +59,8 @@ class ComicController extends Controller
         $newComic->sale_date = $data['sale_date'];
         $newComic->artists = $data["artists"];
         $newComic->writers = $data["writers"];
-        $newComic->thumb =  $data["thumb"];
+        $newComic->thumb =  $data["thumb"]; */
+        $newComic->fill($data);
         $newComic->save();
 
         return redirect()->route("comics.show",  $newComic->id);
@@ -82,17 +83,26 @@ class ComicController extends Controller
 
         return view("comics.show", compact('comic', 'navLinks', 'footerLinks', 'bottomBunnerLinks'));
     }
+
+
+        /************** EDIT **************************************/
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+     
+
+/* 
+        return view() */
+        return view('comics.edit', compact('comic'));
     }
 
+
+    /************** UPDATE **************************************/
     /**
      * Update the specified resource in storage.
      *
@@ -100,19 +110,28 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+
+        $comic->update($data);
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
+
+    /* DESTROY (ma delete nel cuore) */
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Comic $comic)
     {
-        //
+
+        $comic->delete();
+
+        return redirect()->route("comics.index");
     }
 }
