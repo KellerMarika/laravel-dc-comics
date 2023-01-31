@@ -4,6 +4,34 @@
         <h1 class="cards-title text-uppercase bg-primary py-2 px-4 position-absolute fs-3"> current series </h1>
 
 
+
+        @dump($comicTableShema)
+        @dump($comicTableShema[0])
+
+
+        <table class="table" style="">
+            <tr>
+
+                @foreach ($comicTableShema as $column)
+                    @if ($loop->index === 0)
+                        @foreach ($column as $key => $value)
+                            <th scope="col" class="text-primary">{{ $key }}</th>
+                        @endforeach
+                    @endif
+                @endforeach
+
+            </tr>
+
+            @foreach ($comicTableShema as $column)
+                <tr>
+                    @foreach ($column as $key => $value)
+                    <td class="text-danger">{{$value}}</td>
+                    @endforeach
+                </tr>
+            @endforeach
+        </table>
+
+
         <div class="row row-cols-6">
             @foreach ($comics as $key => $comic)
                 <div class="col ">
@@ -14,10 +42,10 @@
                             <img class="img-fluid" src="{{ $comic['thumb'] }}" alt="{{ $comic['series'] }}">
                         </a>
 
-                        <div class="admin-options d-flex justify-content-between border-bottom border-primary" >
+                        <div class="admin-options d-flex justify-content-between border-bottom border-primary">
 
                             <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-link p-1 ">
-                                <i class="fas fa-pencil" ></i>
+                                <i class="fas fa-pencil"></i>
                             </a>
 
                             @php        $element = $comic;   @endphp

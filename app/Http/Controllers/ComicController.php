@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComicController extends Controller
 {
@@ -22,7 +23,11 @@ class ComicController extends Controller
 
         $comics = Comic::all();
 
-        return view('comics.index', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics'));
+        /* array di tutti i valori riferiti alle colonne */
+        $comicTableShema=DB::select('SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = "comics_try" AND TABLE_NAME = "comics"');
+
+
+        return view('comics.index', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics','comicTableShema'));
         //
     }
     /************** CREATE **************************************/
