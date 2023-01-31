@@ -4,11 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
 class ComicController extends Controller
 {
-        /************** INDEX **************************************/
+    public function getTableColumns($table)
+    {
+        return DB::getSchemaBuilder()->getColumnListing($table);
+
+        // OR
+
+        return Schema::getColumnListing($table);
+
+    }
+    /************** INDEX **************************************/
     /**
      * Display a listing of the resource.
      *
@@ -23,11 +34,24 @@ class ComicController extends Controller
 
         $comics = Comic::all();
 
+        $comicTableShema = DB::select(DB::raw('SELECT 
+        *
+    FROM 
+        INFORMATION_SCHEMA.COLUMNS
+    WHERE 
+        TABLE_SCHEMA = "comics_try" 
+        AND TABLE_NAME = "comics"'));
+
         /* array di tutti i valori riferiti alle colonne */
-        $comicTableShema=DB::select('SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = "comics_try" AND TABLE_NAME = "comics"');
+        $comicTableShemaGRETTO = DB::select(
+            'SELECT * 
+            FROM INFORMATION_SCHEMA.COLUMNS 
+            WHERE TABLE_SCHEMA = "comics_try" 
+            AND TABLE_NAME = "comics"'
+        );
 
 
-        return view('comics.index', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics','comicTableShema'));
+        return view('comics.index', compact('navLinks', 'topBunner', 'footerLinks', 'bottomBunnerLinks', 'comics', 'comicTableShema', 'comicTableShemaGRETTO'));
         //
     }
     /************** CREATE **************************************/
@@ -42,7 +66,7 @@ class ComicController extends Controller
         //
     }
 
-        /************** STORE **************************************/
+    /************** STORE **************************************/
 
     /**
      * Store a newly created resource in storage.
@@ -56,7 +80,7 @@ class ComicController extends Controller
 
         // dump($newComic);
         $newComic = new Comic();
-  /*       $newComic->title = $data['title'];
+        /*       $newComic->title = $data['title'];
         $newComic->description = $data['description'];
         $newComic->series = $data['series'];
         $newComic->type = $data['type'];
@@ -68,7 +92,7 @@ class ComicController extends Controller
         $newComic->fill($data);
         $newComic->save();
 
-        return redirect()->route("comics.show",  $newComic->id);
+        return redirect()->route("comics.show", $newComic->id);
     }
 
 
@@ -90,7 +114,7 @@ class ComicController extends Controller
     }
 
 
-        /************** EDIT **************************************/
+    /************** EDIT **************************************/
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,9 +123,9 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-     
 
-/* 
+
+        /* 
         return view() */
         return view('comics.edit', compact('comic'));
     }
@@ -132,7 +156,7 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Comic $comic)
+    public function destroy(Comic $comic)
     {
 
         $comic->delete();
