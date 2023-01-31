@@ -12,8 +12,8 @@
 
 								@csrf {{-- codice univoco identificativo del mio form --}}
 
-								<fieldset class="pb-4 border-secondary border-2 border-bottom">
-										<div class="row gap-2 ">
+							{{-- 	<fieldset class="pb-4 border-secondary border-2 border-bottom"> --}}
+										<div class="row">
 												<div class=" mb-3 col-5">
 
 														<label class="form-label text-light ">title</label>
@@ -27,7 +27,7 @@
 																placeholder="add comic's series">
 												</div>
 
-												<div class="mb-3 col ">
+												<div class="mb-3 col-3 ">
 														<label class="form-label text-light">type</label>
 														<input type="text" class=" form-control bg-light" name="type"
 																placeholder="add comic's type">
@@ -35,44 +35,44 @@
 										</div>
 
 
-										<div class="mb-3 col ">
+										<div class="mb-3 col-12 ">
 												<label class="form-label text-light">Description</label>
 												<textarea rows="3" class="form-control bg-light" name="description" placeholder="add comic's description"></textarea>
 										</div>
-										<div class="mb-3 col ">
+										<div class="mb-3 col-12 ">
 												<label class="form-label text-light">Url</label>
 												<input type="text" class="form-control bg-light" name="thumb" placeholder="add comic's Url">
 										</div>
-								</fieldset>
+						{{-- 		</fieldset> --}}
+{{-- 
+								<fieldset class="p-4 border-secondary border-2 border-bottom"> --}}
+										<div class="row">
 
-								<fieldset class="p-4 border-secondary border-2 border-bottom">
-										<div class="row gap-2">
-
-												<div class="mb-3 col">
+												<div class="mb-3 col-6">
 														<label class="form-label text-light ">artist</label>
 														<input type="text" class=" form-control bg-light" name="artists"
 																placeholder="add comic's artist">
 												</div>
 
-												<div class="mb-3 col">
+												<div class="mb-3 col-6">
 														<label class="form-label text-light">writers</label>
 														<input type="text" class=" form-control bg-light" name="writers"
 																placeholder="add comic's writers">
 												</div>
 										</div>
-								</fieldset>
+					{{-- 			</fieldset> --}}
 
 
-								<fieldset class="p-4 ">
+						{{-- 		<fieldset class="p-4 "> --}}
 										<div class="row gap-2 align-items-end">
 
-												<div class=" col">
+												<div class=" col-4">
 														<label class="form-label text-light ">price</label>
 														<input type="text" class=" form-control bg-light" name="price"
 																placeholder="add comic's price">
 												</div>
 
-												<div class=" col">
+												<div class=" col-4">
 														<label class="form-label text-light">on sale from</label>
 														<input type="date" class="form-control bg-light" name="sale_date"
 																placeholder="add comic's on sale from">
@@ -84,8 +84,8 @@
 												</div>
 										</div>
 
-								</fieldset>
-
+					{{-- 			</fieldset>
+ --}}
 
 						</form>
 				</fieldset>

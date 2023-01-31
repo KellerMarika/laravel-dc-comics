@@ -6,10 +6,33 @@
 
 
         @dump($comicTableShema)
-        @dump($comicTableShema[0])
+
+        @php
+            
+        @endphp
+
+        {{-- form dinamico --}}
+        <form action="">
+            @foreach ($comicTableShema as $column)
+            <h6 class="text-primary">"{{$column->COLUMN_NAME}}"</h6>
+
+                @if (!($column->COLUMN_NAME === 'id' || $column->DATA_TYPE === 'timestamp'))
+                    <li>no id/ timestamp</li>
+                   {{--  @if($column->DATA_TYPE === )
+                        
+                    @endif --}}
+                @endif
+            @endforeach
 
 
-        <table class="table" style="">
+        </form>
+
+
+
+
+{{-- -------------table riferimento --}}
+
+        <table class="table" style="transform: scale(75%) translateX(-35%)">
             <tr>
 
                 @foreach ($comicTableShema as $column)
@@ -25,12 +48,35 @@
             @foreach ($comicTableShema as $column)
                 <tr>
                     @foreach ($column as $key => $value)
-                    <td class="text-danger">{{$value}}</td>
+                        <td class="text-danger">{{ $value }}</td>
                     @endforeach
                 </tr>
             @endforeach
         </table>
 
+        {{-- 
+        <table class="table" style="">
+            <tr>
+
+                @foreach ($comicTableShemaGRETTO as $column)
+                    @if ($loop->index === 0)
+                        @foreach ($column as $key => $value)
+                            <th scope="col" class="text-primary">{{ $key }}</th>
+                        @endforeach
+                    @endif
+                @endforeach
+
+            </tr>
+
+            @foreach ($comicTableShemaGRETTO as $column)
+                <tr>
+                    @foreach ($column as $key => $value)
+                        <td class="text-danger">{{ $value }}</td>
+                    @endforeach
+                </tr>
+            @endforeach
+        </table>
+ --}}
 
         <div class="row row-cols-6">
             @foreach ($comics as $key => $comic)
