@@ -50,11 +50,18 @@ return new class extends Migration {
             $table->mediumInteger('mediumInteger__numbers')->comment('MEDIUMINT');
             $table->smallInteger('smallInteger__votes')->comment('SMALLINT');
             $table->tinyInteger('tinyInteger__numbers')->comment('TINYINT');
+            $table->unsignedBigInteger('unsignedBigInteger__votes')->comment('UNSIGNED BIGINT');
+            $table->unsignedInteger('unsignedInteger__votes')->comment('UNSIGNED INTEGER');
+            $table->unsignedMediumInteger('unsignedMediumInteger__votes')->comment('UNSIGNED MEDIUMINT');
+            $table->unsignedSmallInteger('unsignedSmallInteger__votes')->comment('UNSIGNED SMALLINT');
+            $table->unsignedTinyInteger('unsignedTinyInteger__votes')->comment(' UNSIGNED TINYINT');
+
 
             /* floats */
             $table->double('double__column', 15, 4)->comment('DOUBLE with the given precision (total digits=15) and scale (decimal digits=4)');
             $table->decimal('decimal__amount', 5, 2)->comment('DECIMAL with the given precision (total digits=5) and scale (decimal digits=2)');
             $table->float('float__amount', 8, 2)->comment('FLOAT with the given precision (total digits=8) and scale (decimal digits=2)');
+            $table->unsignedDecimal('unsignedDecimal__amount', $precision = 8, $scale = 2)->comment('UNSIGNED DECIMAL with an optional precision (total digits=8) and scale (decimal digits=2)');
 
 
             /**************** CHECBOX ************************************/
@@ -72,13 +79,16 @@ return new class extends Migration {
             /**************** DATE ************************************/
 
             /* date */
+            $table->year('birth_year')->comment(' YEAR');
+
             $table->date('date__created_at')->comment('	DATE');
             $table->dateTime('dateTime__created_at')->comment('DATETIME');
             $table->dateTimeTz('dateTimeTz__created_at', $precision = 0)->comment('DATETIME (with timezone) with an optional precision (total digits)');
             $table->time('time__sunrise')->comment('TIME');
-            $table->timeTz('sunrise', $precision = 0)->comment('TIME (with timezone) with an optional precision (total digits)');
-            $table->timestamp('timestamp__added_on')->comment('	TIMESTAMP');
-            $table->timestampTz('added_at', $precision = 0)->comment('TIMESTAMP (with timezone)  with an optional precision (total digits)');
+            $table->timeTz('timeTz__sunrise', $precision = 0)->comment('TIME (with timezone) with an optional precision (total digits)');
+            $table->timestamp('timestamp__timestamp__added_on')->comment('	TIMESTAMP');
+            $table->timestampTz('timestampTz__added_at', $precision = 0)->comment('TIMESTAMP (with timezone)  with an optional precision (total digits)');
+
             //$table->timestamps()->comment('Adds created_at and updated_at columns'); LARAVEL default migration
             $table->timestampsTz($precision = 0)->comment('Adds created_at and updated_at columns (with timezone) with an optional precision (total digits)');
             $table->nullableTimestamps(0)->comment('alias of the timestamps method');
@@ -96,8 +106,8 @@ return new class extends Migration {
 
             /* text */
 
-           
-            $table->string('stringAddingLength100__name', 100)->comment('VARCHAR with length');
+            $table->tinyText('tinyText__notes')->comment('TINYTEXT');
+            $table->string('string__stringAddingLength100__name', 100)->comment('VARCHAR with length');
             $table->ipAddress('ipAddress__visitor')->comment('VARCHAR');
 
             /**************** TEXTAREA ************************************/
@@ -115,45 +125,35 @@ return new class extends Migration {
 
 
             $table->lineString('lineString__positions')->comment('LINESTRING');
-            $table->multiLineString('positions')->comment('MULTILINESTRING');
+            $table->multiLineString('>multiLineString__positions')->comment('MULTILINESTRING');
 
-            $table->point('position')->comment('POINT');
-            $table->multiPoint('positions')->comment('MULTIPOINT');
+            $table->point('point__position')->comment('POINT');
+            $table->multiPoint('multiPoint__positions')->comment('MULTIPOINT');
 
-            $table->polygon('position')->comment('POLYGON');
-            $table->multiPolygon('positions')->comment('MULTIPOLYGON');
+            $table->polygon('polygon__position')->comment('POLYGON');
+            $table->multiPolygon('multiPolygon__positions')->comment('MULTIPOLYGON');
 
+            $table->ulid('ulid__id')->comment('UUID');
 
 
             $table->macAddress('macAddress__device')->comment('creates a column that is intended to hold a MAC address. Some database systems, such as PostgreSQL, have a dedicated column type for this type of data. Other database systems will use a string equivalent column');
 
-            $table->morphs('morphs__taggable')->comment('adds a {column}_id UNSIGNED BIGINT and a {column}_type VARCHAR. This method is intended to be used when defining the columns necessary for a polymorphic Eloquent relationship. (In the example, taggable_id and taggable_type columns would be created)');
+            /* morph?! */
 
-            $table->nullableMorphs('taggable')->comment('similar to the morphs method; however, the columns that are created will be "nullable"');
+            $table->morphs('morphs__taggable')->comment('adds a {column}_id UNSIGNED BIGINT and a {column}_type VARCHAR. This method is intended to be used when defining the columns necessary for a polymorphic Eloquent relationship. (In the example, morphs__taggable_id and  morphs__taggable_type columns would be created)');
 
-            $table->nullableUlidMorphs('taggable')->comment(' similar to the ulidMorphs method; however, the columns that are created will be "nullable');
+            $table->nullableMorphs('nullableMorphs__taggable')->comment('similar to the morphs method; however, the columns that are created will be "nullable"');
 
-            $table->nullableUuidMorphs('taggable')->comment('similar to the uuidMorphs method; however, the columns that are created will be "nullable');
+            $table->ulidMorphs('ulidMorphs__taggable')->comment('adds a {column}_id CHAR(26) and a {column}_type VARCHAR equivalent column.
 
+            used when defining the columns necessary for a polymorphic Eloquent relationship that use ULID identifiers.ulidMorphs__taggable_id and ulidMorphs__taggable_type columns would be created');
 
+            $table->nullableUlidMorphs('nullableUlidMorphs__taggable')->comment(' similar to the ulidMorphs method; however, the columns that are created will be "nullable');
+            $table->uuidMorphs('uuidMorphs__taggable')->comment('adds a {column}_id CHAR(36) and a {column}_type VARCHAR equivalent column.
 
+            used when defining the columns necessary for a polymorphic Eloquent relationship that use ULID identifiers.uuidMorphs__taggable_id and uuidMorphs__taggable_type columns would be created');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            $table->nullableUuidMorphs('nullableUuidMorphs__taggable')->comment('similar to the uuidMorphs method; however, the columns that are created will be "nullable');
 
 
         });
