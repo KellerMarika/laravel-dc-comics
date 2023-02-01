@@ -2,64 +2,86 @@
 return  [
 
 'file' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'file',
         
     ]
 ],
 
 'color' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'custom_color',
     ]
 ],
 
 'range' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'range', //occorre fornire un min max e step
     ]
 ],
 
 'email' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'email',
     ]
 ],
 
 'password' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'password',
     ]
 ],
 
 
 'url' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'url',
+        'thumb'
     ]
 ],
 
 'tel' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'phone',
     ]
 ],
 
 'week' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'week',
     ]
 ],
 
 'month' => [
-    'containedStringIn_COLUMN_NAME' => [
+    'COLUMN_NAME' => [
         'month',
     ]
 ],
 
+'checkbox' => [
+
+    'COLUMN_TYPE' => [
+        'tinyint(1)',
+    ],
+    //e il valore è === true o === false
+
+    'DATA_TYPE' => [
+        'boolean',
+        'bool'
+    ],
+
+],
+
+'radio' => [
+
+    'DATA_TYPE' => [
+        'enum',
+        'set'
+    ],
+],
 'number' => [
 
-    'integer-float_DATA_TYPE' => [
+    'DATA_TYPE' => [
         'bigint',
         'int',
         'mediumint',
@@ -74,46 +96,31 @@ return  [
     ],
 ],
 
-'select-radio' => [
-
-    'multiChoices_DATA_TYPE' => [
-        'enum',
-        'set'
-    ],
-],
-
-'checkbox' => [
-
-    'boolean_DATA_TYPE' => [
-        'boolean',
-        'bool'
-    ],
-],
 
 'date' => [
 
-    'onlyDate_DATA_TYPE' => [
+    'DATA_TYPE' => [
         'date',
     ],
 ],
 
 'Datetime-local' => [
 
-    'dateTime_DATA_TYPE' => [
+    'DATA_TYPE' => [
         'datetime',
     ],
 ],
 
 'time' => [
 
-    'onlyTime_DATA_TYPE' => [
+    'DATA_TYPE' => [
         'time',
     ],
 ],
 
 'textarea' => [
 
-    'bigText_DATA_TYPE' => [
+    'DATA_TYPE' => [
         'text',
         'mediumtext',
         'longtext',
@@ -123,7 +130,7 @@ return  [
 
 'text' => [
 
-    'smallText_DATA_TYPE' => [
+    'DATA_TYPE' => [
         'char',
         'tinytext',
         'varchar',

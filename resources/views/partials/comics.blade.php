@@ -1,11 +1,14 @@
-<article class="cards-container py_l">
+ssss<article class="cards-container py_l">
     <div class="container text-center position-relative">
 
         <h1 class="cards-title text-uppercase bg-primary py-2 px-4 position-absolute fs-3"> current series </h1>
 
 
 
-        @dump($comicTableShema)
+        {{-- @dump( array_key_exists($column->COLUMN_NAME, $values)) --}}
+
+        {{--  @dump($comicTableShema) --}}
+        @dump($formInputguide['url']['COLUMN_NAME']);
 
         @php
             
@@ -13,45 +16,116 @@
 
         {{-- form dinamico --}}
         <form action="">
-            @foreach ($comicTableShema as $column)
-            <h6 class="text-primary">"{{$column->COLUMN_NAME}}"</h6>
 
+            @foreach ($comicTableShema as $column)
+                {{-- escludo i valori che non mi interessano --}}
                 @if (!($column->COLUMN_NAME === 'id' || $column->DATA_TYPE === 'timestamp'))
-                    <li>no id/ timestamp</li>
-                   {{--  @if($column->DATA_TYPE === )
-                        
-                    @endif --}}
+                    @foreach ($formInputguide as $inputType => $columnToMatch)
+                        @foreach ($columnToMatch as $key => $values)
+
+                            {{-- ciclo prima su COLUMN_NAME ed escludo tutti i valori --}}
+
+                            @if (($key === 'COLUMN_NAME') & in_array($column->COLUMN_NAME, $values))
+                                <label class="form-label text-light "
+                                for="{{ $column->COLUMN_NAME }}">
+                                {{ $column->COLUMN_NAME }}
+                                    <small>{{ $column->CHARACTER_MAXIMUM_LENGTH ? "(max '$column->CHARACTER_MAXIMUM_LENGTH' digits)" : '' }}</small></label>
+
+                                {{-- INPUT PER COLUMN NAME --}}
+                                    <input type="{{ $inputType }}" class=" form-control bg-light"
+                                            name="{{ $column->COLUMN_NAME }}"
+                                            id="{{ $column->COLUMN_NAME }}"
+                                            placeholder="add comic's {{ $column->COLUMN_NAME }}"
+                                            {{ $column->CHARACTER_MAXIMUM_LENGTH ? "max= '$column->CHARACTER_MAXIMUM_LENGTH'" : '' }}>
+
+                                {{-- INPUT PER COLUMN TYPE --}}          
+                            @elseif(($key === 'COLUMN_TYPE') & in_array($column->COLUMN_TYPE, $values))
+
+                                <label class="form-label text-light "
+                                for="{{ $column->COLUMN_NAME }}">
+                                {{ $column->COLUMN_NAME }}
+                                    <small>{{ $column->CHARACTER_MAXIMUM_LENGTH ? 
+                                    "(max '$column->CHARACTER_MAXIMUM_LENGTH' digits)" : '' }}</small></label>
+
+
+                                    <input type="{{ $inputType }}" class=" form-control bg-light"
+                                            name="{{ $column->COLUMN_NAME }}"
+                                            id="{{ $column->COLUMN_NAME }}"
+                                            placeholder="add comic's {{ $column->COLUMN_NAME }}"
+                                            {{ $column->CHARACTER_MAXIMUM_LENGTH ? "max= '$column->CHARACTER_MAXIMUM_LENGTH'" : '' }}>
+
+                            
+>
+
+                                  {{-- INPUT PER DATA TYPE --}}  
+
+                            @elseif(($key === 'DATA_TYPE') & in_array($column->DATA_TYPE, $values))
+                                @if ($inputType === 'textarea')
+                                    <label class="form-label text-light">{{ $column->COLUMN_NAME }}
+                                        <small>{{ $column->CHARACTER_MAXIMUM_LENGTH ? "(max '$column->CHARACTER_MAXIMUM_LENGTH' digits)" : '' }}</small></label>
+                                        <textarea rows="3" class="form-control bg-light"
+                                                name="{{ $column->COLUMN_NAME }}"
+                                                id="{{ $column->COLUMN_NAME }}"
+
+                                                placeholder="add comic's {{ $column->COLUMN_NAME }}"
+                                                {{ $column->CHARACTER_MAXIMUM_LENGTH ? "max= '$column->CHARACTER_MAXIMUM_LENGTH'" : '' }}></textarea>
+        
+                                @elseif ($inputType === 'radio')
+
+                                @dump( $column->COLUMN_TYPE)
+                                    <label class="form-label text-light">{{ $column->COLUMN_NAME }}
+                                        <small>{{ $column->CHARACTER_MAXIMUM_LENGTH ? "(max '$column->CHARACTER_MAXIMUM_LENGTH' digits)" : '' }}</small></label>
+                                        <textarea rows="3" class="form-control bg-light"
+                                                name="{{ $column->COLUMN_NAME }}"
+                                                id="{{ $column->COLUMN_NAME }}"
+
+                                                placeholder="add comic's {{ $column->COLUMN_NAME }}"
+                                                {{ $column->CHARACTER_MAXIMUM_LENGTH ? "max= '$column->CHARACTER_MAXIMUM_LENGTH'" : '' }}></textarea>
+        
+                                @elseif($inputType === 'number')
+                                @else
+                                    <label class="form-label text-light ">{{ $column->COLUMN_NAME }}
+                                        <small>{{ $column->CHARACTER_MAXIMUM_LENGTH ? "(max '$column->CHARACTER_MAXIMUM_LENGTH' digits)" : '' }}</small></label>
+
+                                        <input type="{{ $inputType }}" class=" form-control bg-light"
+                                                name="{{ $column->COLUMN_NAME }}"
+                                                id="{{ $column->COLUMN_NAME }}"
+
+                                                placeholder="add comic's {{ $column->COLUMN_NAME }}"
+                                                {{ $column->CHARACTER_MAXIMUM_LENGTH ? "max= '$column->CHARACTER_MAXIMUM_LENGTH'" : '' }}>
+                                @endif
+                            @endif
+                        @endforeach
+                    @endforeach
                 @endif
             @endforeach
-
-
         </form>
 
 
 
 
-{{-- -------------table riferimento --}}
+        {{-- -------------table riferimento --}}
 
         <table class="table" style="transform: scale(75%)">
             <tr>
 
                 @foreach ($comicTableShema as $column)
-                    @if ($loop->index === 0)
-                        @foreach ($column as $key => $value)
-                            <th scope="col" class="text-primary">{{ $key }}</th>
-                        @endforeach
-                    @endif
-                @endforeach
+@if ($loop->index === 0)
+@foreach ($column as $key => $value)
+<th scope="col" class="text-primary">{{ $key }}</th>
+@endforeach
+@endif
+@endforeach
 
             </tr>
 
             @foreach ($comicTableShema as $column)
-                <tr>
+<tr>
                     @foreach ($column as $key => $value)
-                        <td class="text-danger">{{ $value }}</td>
-                    @endforeach
+<td class="text-danger">{{ $value }}</td>
+@endforeach
                 </tr>
-            @endforeach
+@endforeach
         </table>
 
         {{-- 
@@ -80,7 +154,7 @@
 
         <div class="row row-cols-6">
             @foreach ($comics as $key => $comic)
-                <div class="col ">
+<div class="col ">
 
                     <div class="card-dark ">
 
@@ -103,7 +177,7 @@
                         </a>
                     </div>
                 </div>
-            @endforeach
+@endforeach
 
         </div>
 

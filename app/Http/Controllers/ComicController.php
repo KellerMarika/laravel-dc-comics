@@ -28,7 +28,7 @@ class ComicController extends Controller
 
         /** ARRAY  **/
 
-        $formInputguide = config("DBdformInputguide"); 
+        $formInputguide = config("DBformInputguide"); 
 
 
 
@@ -49,7 +49,7 @@ class ComicController extends Controller
         INFORMATION_SCHEMA.COLUMNS
     WHERE 
         TABLE_SCHEMA = "comics_try" 
-        AND TABLE_NAME = "datatypes"
+        AND TABLE_NAME = "comics"
         ORDER BY "DATA_TYPE"'));
 
 
