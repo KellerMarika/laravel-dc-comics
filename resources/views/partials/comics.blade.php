@@ -32,7 +32,7 @@
 
 {{-- -------------table riferimento --}}
 
-        <table class="table" style="transform: scale(75%) translateX(-35%)">
+        <table class="table" style="transform: scale(75%)">
             <tr>
 
                 @foreach ($comicTableShema as $column)

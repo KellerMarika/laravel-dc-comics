@@ -22,9 +22,9 @@ return new class extends Migration
             $table->float("price", 6, 2)->comment('number')->change();
             $table->dateTime('sale_date')->comment('date')->change();
             $table->string ('thumb')->nullable('https://st2.depositphotos.com/1006899/8089/i/600/depositphotos_80897014-stock-photo-page-not-found.jpg')->change();
-            $table->boolean('available')->nullable()->default(false);
+         /*    $table->boolean('available')->nullable()->default(false);
             $table->integer('qta')->nullable()->default(0);
-            $table->enum('difficulty', ['easy','medium', 'hard'])->default(0);
+            $table->enum('difficulty', ['easy','medium', 'hard'])->default(0); */
         });
     }
 
