@@ -124,7 +124,8 @@ return  [
         'text',
         'mediumtext',
         'longtext',
-        'json'//boh
+        'json',
+       
     ],
 ],
 
@@ -135,13 +136,7 @@ return  [
         'tinytext',
         'varchar',
         'string',
-        //più tutto il resto
-    ],
-],
-
-/*       '?' => [
-
-    'space_DATA_TYPE' => [
+        
         'linestring',
         'multilinestring',
         'point',
@@ -150,9 +145,10 @@ return  [
         'multipolygon',
         'geometry',
         'geometrycollection',
- 
+        //più tutto il resto
     ],
-], */
+],
+
 
 
 
